@@ -2,7 +2,7 @@
 
 int main(void)
 {
-	unsigned int n, m, i, num, cnt = 0;
+	unsigned int n, m, i, j, num, cnt = 0, in;
 
 	std::cin >> n >> m;
 
@@ -15,10 +15,14 @@ int main(void)
 	for (i = 0, num = n; num < m; i++)
 		num <<= 1;
 
-	for (unsigned in = num - m; in; in >>= 1)
+	in = num - m;
+	for (j = 0; j < i && in; j++)
+	{
 		if (in & 0x1)
 			cnt++;
+		in >>= 1;
+	}
 
-	std::cout << i + cnt;
+	std::cout << i + cnt + in;
 	return 0;
 }
